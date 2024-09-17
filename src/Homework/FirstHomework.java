@@ -103,7 +103,7 @@ public class FirstHomework {
         int number = sc2.nextInt();
 
         if (number <= 0) {
-            System.out.println("Please enter a positive integer.");
+            System.out.println("Please enter a positive int.");
         } else {
             int count = 0;
             int temp = number;
@@ -205,7 +205,7 @@ public class FirstHomework {
         int n2 = scanner5.nextInt();
 
         if (n2 <= 0) {
-            System.out.println("Please enter a positive integer.");
+            System.out.println("Please enter a positive int.");
         } else {
             int a = 0;
             int b = 1;
@@ -229,11 +229,11 @@ public class FirstHomework {
 
         Scanner sc5 = new Scanner(System.in);
 
-        System.out.println("Enter a positive integer n: ");
+        System.out.println("Enter a positive int: ");
         int n6 = sc5.nextInt();
 
         if (n6 <= 0) {
-            System.out.println("Please enter a positive integer.");
+            System.out.println("Please enter a positive int.");
         } else {
             double ln2Approximation = 0.0;
 

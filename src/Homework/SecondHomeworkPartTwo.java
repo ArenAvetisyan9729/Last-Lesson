@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class SecondHomeworkPartTwo {
 
+//===================METHODS=================//
+//===================2=================//
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -33,7 +36,7 @@ public class SecondHomeworkPartTwo {
             } else if (answer == 'l') {
                 high = guess - 1;
             } else {
-                System.out.println("Invalid input. Please enter 'h', 'l', or 'c'.");
+                System.out.println("Invalid input. Please enter 'c', 'h', or 'l'.");
             }
         }
         scanner.close();
