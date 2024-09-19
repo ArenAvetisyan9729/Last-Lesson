@@ -5,14 +5,29 @@ import java.util.Scanner;
 
 public class FirstHomework {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-//===================BRANCHING=================//
-//===================1=================//
+        BranchingLogic.checkBranching();
+        LeapYearChecker.checkLeapYear();
+        Calculator.performCalculation(sc);
+        CourseRegistration.registerCourse(sc);
+        DigitCounter.countDigits(sc);
+        LargestSmallestFinder.findLargestAndSmallest(sc);
+        SumCalculator.sumNumbers(sc);
+        PowerCalculator.calculatePower(sc);
+        ArmstrongNumberFinder.findArmstrongNumbers(sc);
+        FibonacciGenerator.generateFibonacci(sc);
+        LnApproximation.approximateLn(sc);
+        ArrayMaxMinFinder.findMaxMin();
+        ArrayElementRemover.removeElementFromArray(sc);
 
-        int x = 10;
-        int y = 14;
-        int z = 25;
+        sc.close();
+    }
+}
 
+class BranchingLogic {
+    public static void checkBranching() {
+        int x = 10, y = 14, z = 25;
         if (x < y && y < z) {
             System.out.println("increasing");
         } else if (x > y && y > z) {
@@ -20,19 +35,23 @@ public class FirstHomework {
         } else {
             System.out.println("neither");
         }
+    }
+}
 
-//===================2=================//
-
+class LeapYearChecker {
+    public static void checkLeapYear() {
         int year = 2000;
-        if ((year % 4 == 0) || (year % 400 == 0)) {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " is a leap year.");
         } else {
             System.out.println(year + " is not a leap year.");
         }
+    }
+}
 
-//===================3=================//
-
-        Scanner sc = new Scanner(System.in);
+class Calculator {
+    public static void performCalculation(Scanner sc) {
+        System.out.println("Enter two numbers and an operator: ");
         int num1 = sc.nextInt();
         int num2 = sc.nextInt();
         char operator = sc.next().charAt(0);
@@ -57,14 +76,15 @@ public class FirstHomework {
             default:
                 System.out.println("Invalid operator.");
         }
+    }
+}
 
-//===================4=================//
-
-        Scanner sc1 = new Scanner(System.in);
+class CourseRegistration {
+    public static void registerCourse(Scanner sc) {
         System.out.println("Enter the semester: ");
-        String semester = sc1.nextLine();
+        String semester = sc.nextLine();
         System.out.println("Enter the program: ");
-        String program = sc1.nextLine();
+        String program = sc.nextLine();
 
         switch (semester) {
             case "fall":
@@ -95,12 +115,13 @@ public class FirstHomework {
             default:
                 System.out.println("Invalid semester.");
         }
+    }
+}
 
-//===================LOOP======================//
-//===================1=================//
-
-        Scanner sc2 = new Scanner(System.in);
-        int number = sc2.nextInt();
+class DigitCounter {
+    public static void countDigits(Scanner sc) {
+        System.out.println("Enter a number: ");
+        int number = sc.nextInt();
 
         if (number <= 0) {
             System.out.println("Please enter a positive int.");
@@ -113,25 +134,24 @@ public class FirstHomework {
                 count++;
             }
             System.out.println("The number " + number + " has " + count + " digits.");
-
         }
+    }
+}
 
-//===================2=================//
-
-        Scanner sc3 = new Scanner(System.in);
-
-        int largest = Integer.MIN_VALUE;
-        int smallest = Integer.MAX_VALUE;
-
+class LargestSmallestFinder {
+    public static void findLargestAndSmallest(Scanner sc) {
         System.out.println("How many numbers do you want to enter?");
-        int count = sc3.nextInt();
+        int count = sc.nextInt();
 
         if (count <= 0) {
             System.out.println("Please enter a positive number of inputs.");
         } else {
+            int largest = Integer.MIN_VALUE;
+            int smallest = Integer.MAX_VALUE;
+
             for (int i = 1; i <= count; i++) {
                 System.out.println("Enter number " + i + ": ");
-                int num = sc3.nextInt();
+                int num = sc.nextInt();
 
                 if (num > largest) {
                     largest = num;
@@ -143,49 +163,47 @@ public class FirstHomework {
             System.out.println("Largest number: " + largest);
             System.out.println("Smallest number: " + smallest);
         }
+    }
+}
 
-//===================3=================//
-
-        Scanner scanner = new Scanner(System.in);
+class SumCalculator {
+    public static void sumNumbers(Scanner sc) {
         String userResponse;
 
         do {
-            double num3 = scanner.nextDouble();
-            double num4 = scanner.nextDouble();
-
-            double sum = num3 + num4;
+            System.out.println("Enter two numbers to sum: ");
+            double num1 = sc.nextDouble();
+            double num2 = sc.nextDouble();
+            double sum = num1 + num2;
 
             System.out.println("The sum is: " + sum);
-
             System.out.print("Do you want to perform the operation again? (yes/no): ");
-            userResponse = scanner.next();
-
+            userResponse = sc.next();
         } while (userResponse.equalsIgnoreCase("yes"));
-
-        scanner.close();
         System.out.println("Program terminated.");
+    }
+}
 
-//===================4=================//
-
-        Scanner scanner1 = new Scanner(System.in);
-
-        int n = scanner1.nextInt();
-        int k = scanner1.nextInt();
-
+class PowerCalculator {
+    public static void calculatePower(Scanner sc) {
+        System.out.println("Enter base and exponent: ");
+        int n = sc.nextInt();
+        int k = sc.nextInt();
         int result = 1;
+
         for (int i = 0; i < k; i++) {
             result *= n;
         }
-
         System.out.println(n + " to the power of " + k + " is " + result);
+    }
+}
 
-        scanner.close();
-
-//===================5=================//
-
-        for (int number1 = 1; number1 <= 500; number1++) {
+class ArmstrongNumberFinder {
+    public static void findArmstrongNumbers(Scanner sc) {
+        System.out.println("Armstrong numbers between 1 and 500:");
+        for (int number = 1; number <= 500; number++) {
             int sumOfCubes = 0;
-            int temp = number1;
+            int temp = number;
 
             while (temp > 0) {
                 int digit = temp % 10;
@@ -193,51 +211,51 @@ public class FirstHomework {
                 temp /= 10;
             }
 
-            if (sumOfCubes == number1) {
-                System.out.println(number1 + " is an Armstrong number.");
+            if (sumOfCubes == number) {
+                System.out.println(number + " is an Armstrong number.");
             }
-
         }
+    }
+}
 
-//===================6=================//
+class FibonacciGenerator {
+    public static void generateFibonacci(Scanner sc) {
+        System.out.println("Enter the number of Fibonacci terms: ");
+        int n = sc.nextInt();
 
-        Scanner scanner5 = new Scanner(System.in);
-        int n2 = scanner5.nextInt();
-
-        if (n2 <= 0) {
+        if (n <= 0) {
             System.out.println("Please enter a positive int.");
         } else {
-            int a = 0;
-            int b = 1;
-
-            for (int i = 0; i < n2; i++) {
+            int a = 0, b = 1;
+            System.out.println("Fibonacci series: ");
+            for (int i = 0; i < n; i++) {
                 if (i == 0) {
-                    System.out.println(a + " ");
+                    System.out.print(a + " ");
                 } else if (i == 1) {
-                    System.out.println(b + " ");
+                    System.out.print(b + " ");
                 } else {
                     int next = a + b;
-                    System.out.println(next + " ");
+                    System.out.print(next + " ");
                     a = b;
                     b = next;
                 }
             }
+            System.out.println();
         }
-        scanner.close();
+    }
+}
 
-//===================7=================//
-
-        Scanner sc5 = new Scanner(System.in);
-
+class LnApproximation {
+    public static void approximateLn(Scanner sc) {
         System.out.println("Enter a positive int: ");
-        int n6 = sc5.nextInt();
+        int n = sc.nextInt();
 
-        if (n6 <= 0) {
+        if (n <= 0) {
             System.out.println("Please enter a positive int.");
         } else {
             double ln2Approximation = 0.0;
 
-            for (int i = 1; i <= n6; i++) {
+            for (int i = 1; i <= n; i++) {
                 if (i % 2 == 0) {
                     ln2Approximation -= 1.0 / i;
                 } else {
@@ -246,10 +264,11 @@ public class FirstHomework {
             }
             System.out.println("Approximation of ln(2) using " + n + " terms: " + ln2Approximation);
         }
+    }
+}
 
-//===================ARRAYS======================//
-//===================1=================//
-
+class ArrayMaxMinFinder {
+    public static void findMaxMin() {
         int[] numbers = {4, 5, 8, 3, 9, -1, 7, 10, -3};
 
         if (numbers.length == 0) {
@@ -269,16 +288,16 @@ public class FirstHomework {
             System.out.println("Maximum value: " + max);
             System.out.println("Minimum value: " + min);
         }
+    }
+}
 
-//===================2=================//
-
-        Scanner sc8 = new Scanner(System.in);
-
+class ArrayElementRemover {
+    public static void removeElementFromArray(Scanner sc) {
         int[] originalArray = {2, 5, 8, 7, 9, 10, 4};
         System.out.println("Original array: " + Arrays.toString(originalArray));
 
         System.out.println("Enter the element to remove: ");
-        int elementToRemove = sc8.nextInt();
+        int elementToRemove = sc.nextInt();
 
         int indexToRemove = -1;
 
