@@ -22,6 +22,10 @@ public class FourthHomework {
         int number = 12345;
         int sum = SumOfDigits.digits(number);
         System.out.println(sum);
+        int[] array = {1, 5, 2, 15, 7, -8, 0};
+        int[] result3 = MinMax.minMax(array, 0, array.length - 1);
+        System.out.println("Min: " + result3[0]);
+        System.out.println("Max: " + result3[1]);
     }
 }
 
@@ -89,6 +93,31 @@ class SumOfDigits {
         return (n % 10) + digits(n / 10);
     }
 }
+
+class MinMax {
+    public static int[] minMax(int[] array, int left, int right) {
+        if (left == right) {
+            return new int[]{array[left], array[left]};
+        }
+
+        if (right == left + 1) {
+            int min = (array[left] < array[right]) ? array[left] : array[right];
+            int max = (array[left] > array[right]) ? array[left] : array[right];
+            return new int[]{min, max};
+        }
+
+        int mid = (left + right) / 2;
+        int[] leftMinMax = minMax(array, left, mid);
+        int[] rightMinMax = minMax(array, mid + 1, right);
+
+        int min = (leftMinMax[0] < rightMinMax[0]) ? leftMinMax[0] : rightMinMax[0];
+        int max = (leftMinMax[1] > rightMinMax[1]) ? leftMinMax[1] : rightMinMax[1];
+
+        return new int[]{min, max};
+    }
+}
+
+
 
 
 
