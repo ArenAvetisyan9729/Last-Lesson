@@ -5,12 +5,16 @@ public class FourthHomework {
 
         int result = Fibonacci.fib(4);
         System.out.println(result);
+
         int result1 = Factorial.fact(4);
         System.out.println(result1);
+
         int result2 = Digit.dig(5, 3);
         System.out.println(result2);
+
         int[] arr = {1, 2, 3, 4, 5};
         Reverse.reverse(arr, arr.length - 1);
+
         System.out.println(" ");
         String str = "oko";
         boolean palindrome = Palindrome.palindrome(str, 0, str.length() - 1);
@@ -19,9 +23,11 @@ public class FourthHomework {
         } else {
             System.out.println(str + " is not a palindrome.");
         }
+
         int number = 12345;
         int sum = SumOfDigits.digits(number);
         System.out.println(sum);
+
         int[] array = {1, 5, 2, 15, 7, -8, 0};
         int[] result3 = MinMax.minMax(array, 0, array.length - 1);
         System.out.println("Min: " + result3[0]);
